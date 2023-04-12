@@ -2,6 +2,7 @@ package com.app.story.domain;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,10 +13,14 @@ import java.time.Instant;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Story {
+
     @Id
-    @SequenceGenerator(name = "story_id_seq_gen" ,sequenceName = "story_id_seq")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE , generator = "story_id_seq_gen")
+    // Todo: Come back here to fix generationType
+//    @SequenceGenerator(name = "story_id_seq_gen" ,sequenceName = "story_id_seq")
+//    @GeneratedValue(strategy = GenerationType.SEQUENCE , generator = "story_id_seq_gen")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "story_title", nullable = false)

@@ -1,13 +1,19 @@
 package com.app.story;
 
+import com.app.story.domain.Story;
+import com.app.story.service.StoryService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
+
+import java.util.List;
 
 @SpringBootApplication
 public class NewsStoryApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(NewsStoryApplication.class, args);
+	 SpringApplication.run(NewsStoryApplication.class, args);
 	}
 
 }
