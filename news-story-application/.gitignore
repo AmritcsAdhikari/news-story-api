@@ -34,5 +34,4 @@ build/
 
 
 ### development
-!**/src/main/resources/developer-notes.txt
 src/main/resources/developer-notes.txt
