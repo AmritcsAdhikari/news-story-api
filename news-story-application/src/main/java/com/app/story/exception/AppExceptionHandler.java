@@ -20,6 +20,7 @@ public class AppExceptionHandler {
     private String msg2;
     @Value(value = "${data.exception.code.invalid-method-args}")
     private String msg3;
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<AppError> handleMethodArgumentNotValidException(MethodArgumentNotValidException exception) {
         Map<String, String> errorMap = new HashMap<>();
@@ -45,6 +46,7 @@ public class AppExceptionHandler {
                 .build();
         return new ResponseEntity<>(appError, HttpStatus.BAD_REQUEST);
     }
+
     @ExceptionHandler(FailedSaveException.class)
     public ResponseEntity<AppError> handleFailedSaveException(FailedSaveException exception) {
         Map<String, String> errorMap = new HashMap<>();
