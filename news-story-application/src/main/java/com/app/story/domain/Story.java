@@ -10,8 +10,8 @@ import java.time.Instant;
 
 @Entity
 @Table(name = "news_story")
-@Data
 @NoArgsConstructor
+@Data
 @AllArgsConstructor
 @Builder
 public class Story {

@@ -1,6 +1,5 @@
 package com.app.story.dto;
 
-import com.app.story.domain.Division;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

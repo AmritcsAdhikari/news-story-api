@@ -4,6 +4,7 @@ import com.app.story.dto.StoriesDTO;
 import com.app.story.dto.StoryDTO;
 import com.app.story.dto.StoryRequest;
 import com.app.story.service.StoryService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +24,7 @@ public class StoryController {
         return new ResponseEntity<>(service.getAllStories(page), HttpStatus.OK);
     }
     @PostMapping("/story")
-    public ResponseEntity<StoryDTO> createStory(@RequestBody StoryRequest storyRequest){
+    public ResponseEntity<StoryDTO> createStory(@RequestBody @Valid StoryRequest storyRequest){
         return new ResponseEntity<>(service.createStory(storyRequest),HttpStatus.CREATED);
     }
     @GetMapping("story/{id}")

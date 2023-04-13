@@ -1,10 +1,12 @@
 package com.app.story.service;
 
-import com.app.story.domain.Division;
 import com.app.story.domain.Story;
 import com.app.story.dto.StoriesDTO;
 import com.app.story.dto.StoryDTO;
 import com.app.story.dto.StoryRequest;
+import com.app.story.domain.Division;
+import com.app.story.exception.FailedSaveException;
+import com.app.story.exception.StoryNotFoundException;
 import com.app.story.repository.StoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -51,7 +53,7 @@ public class StoryService {
                 .link(value.getLink())
                 .division(value.getDivision().toString())
                 .createdAt(value.getCreatedAt())
-                .build()).orElseThrow(()-> new RuntimeException("no Story found with id + " + id));
+                .build()).orElseThrow(()-> new StoryNotFoundException("No Story found for id -" + id));
     }
 
     public StoryDTO createStory(StoryRequest storyRequest) {
@@ -67,7 +69,7 @@ public class StoryService {
             return mapToDto(story);
         }
         else {
-            throw new RuntimeException("Story Failed to save");
+            throw new FailedSaveException("Story Failed to save");
         }
     }
     
@@ -76,7 +78,7 @@ public class StoryService {
             Story save = storyRepository.save(mapToEntity(storyDTO));
             return mapToDto(save);
         } else {
-            throw new RuntimeException("Cannot find story with given id - " + storyDTO.getId());
+            throw new StoryNotFoundException("Cannot find story with given id - " + storyDTO.getId());
         }
     }
 
@@ -85,7 +87,7 @@ public class StoryService {
             storyRepository.deleteById(id);
         }
         else{
-            throw new RuntimeException("Unable to delete story with id - " + id);
+            throw new StoryNotFoundException("Story with id - " + id + " does not exist.");
         }
     }
 
