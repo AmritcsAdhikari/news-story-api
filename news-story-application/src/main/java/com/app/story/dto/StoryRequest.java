@@ -17,6 +17,6 @@ public class StoryRequest {
     private String title;
     @NotBlank (message = "Link cannot be Blank")
     private String link;
-    @Pattern(regexp = "BUSINESS | ENTERTAINMENT | POLITICS")
+    @Pattern(regexp = "BUSINESS|ENTERTAINMENT|POLITICS")
     private String division;
 }
